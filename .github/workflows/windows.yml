@@ -44,6 +44,7 @@ jobs:
           cmake:p
           ninja:p
           qt6-base:p
+          qt6-svg:p
           fluidsynth:p
     
     - name: '${{ matrix.icon }} Configure CMake'
