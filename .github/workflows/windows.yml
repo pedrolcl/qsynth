@@ -22,7 +22,7 @@ jobs:
             - { icon: '🟦', sys: mingw64 }
             - { icon: '🟨', sys: ucrt64  }
             - { icon: '🟧', sys: clang64 }
-            - { icon: '🟪', sys: clangarm64 }
+            # { icon: '🟪', sys: clangarm64 }
     name: 🚧${{ matrix.icon }} ${{ matrix.sys }}
     defaults:
       run:
@@ -45,6 +45,7 @@ jobs:
           ninja:p
           qt6-base:p
           qt6-svg:p
+          qt6-tools:p
           fluidsynth:p
     
     - name: '${{ matrix.icon }} Configure CMake'
