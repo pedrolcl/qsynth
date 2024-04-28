@@ -47,6 +47,7 @@ jobs:
           qt6-svg:p
           qt6-tools:p
           fluidsynth:p
+          nsis:p
     
     - name: '${{ matrix.icon }} Configure CMake'
       run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_LOCATION}}
@@ -54,14 +55,16 @@ jobs:
     - name: '${{ matrix.icon }} Build'
       run: cmake --build build --config ${{env.BUILD_TYPE}}
 
-    - name: '${{ matrix.icon }} Install'
-      run: cmake --install build && ls -la $INSTALL_LOCATION
+    #- name: '${{ matrix.icon }} Run Windows installer creation'
+    #  run: makensis build/src/setup.nsi
 
-    - name: '${{ matrix.icon }} Upload Artifacts'
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{env.INSTALL_LOCATION}}-${{matrix.sys}}
-        path: ${{env.INSTALL_LOCATION}}
-        retention-days: 14
-        overwrite: true
-        
+    #- name: '${{ matrix.icon }} Install'
+    #  run: cmake --install build && ls -la $INSTALL_LOCATION
+
+    #- name: '${{ matrix.icon }} Upload Artifacts'
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: ${{env.INSTALL_LOCATION}}-${{matrix.sys}}
+    #    path: ${{env.INSTALL_LOCATION}}
+    #    retention-days: 14
+    #    overwrite: true
