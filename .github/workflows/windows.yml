@@ -46,6 +46,7 @@ jobs:
           qt6-base:p
           qt6-svg:p
           qt6-tools:p
+          qt6-translations:p
           fluidsynth:p
     
     - name: '${{ matrix.icon }} Configure CMake'
@@ -55,15 +56,13 @@ jobs:
       run: cmake --build build --config ${{env.BUILD_TYPE}}
 
     #- name: '${{ matrix.icon }} Run Windows installer creation'
-    #  run: makensis build/src/setup.nsi
-
-    #- name: '${{ matrix.icon }} Install'
-    #  run: cmake --install build && ls -la $INSTALL_LOCATION
+    #  shell: cmd
+    #  run: 'c:/Program Files (x86)/NSIS/Bin/makensis.exe' build/src/setup.nsi
 
     #- name: '${{ matrix.icon }} Upload Artifacts'
     #  uses: actions/upload-artifact@v4
     #  with:
     #    name: ${{env.INSTALL_LOCATION}}-${{matrix.sys}}
     #    path: ${{env.INSTALL_LOCATION}}
-    #    retention-days: 14
+    #    retention-days: 90
     #    overwrite: true
