@@ -122,8 +122,8 @@ void qsynthSetup::realize (void)
 		else
 			sAudioKey += "device";
 		::fluid_settings_setstr(m_pFluidSettings,
-			sAudioKey.toLocal8Bit().data(),
-			sAudioDevice.toLocal8Bit().data());
+			sAudioKey.toUtf8().data(),
+			sAudioDevice.toUtf8().data());
 	}
 	if (!sJackName.isEmpty()) {
 		pszKey = (char *) "audio.jack.id";
